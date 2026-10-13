@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+   <div class="block-patient">
+        <h2>{{treatment.name}}</h2>
+        <p><b>visit type:</b> <span>{{treatment.name}}</span></p>
+        <p><b>cost:</b> <span>{{treatment.cost}}€</span></p>
+        <p><b>description:</b> <span>{{treatment.description}}</span></p>
+        <a class="btn" href="{% url 'treatments'%}">back</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Clinic E&N</title>{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/stethoscope.png' %}" >
+</head>
+<body>
+    {%block sidebar%}
+    <div class="sidebar">
+        <ul>
+            <li {% if request.resolver_match.url_name == 'dashboard' %}style="background-color: rgb(119, 209, 237)"{% endif %}><a href="{% url 'dashboard'%}"><img src="{% static 'images/home.png' %}" alt="home"><span>home</span></a></li>
+            <li {% if request.resolver_match.url_name == 'doctors' %}style="background-color: rgb(119, 209, 237)"{% endif %}><a href="{% url 'doctors'%}"><img src="{% static 'images/user-md.png' %}" alt="h"><span>doctors</span></a></li>
+            <li {% if request.resolver_match.url_name == 'treatments' %}style="background-color: rgb(119, 209, 237)"{% endif %}><a href="{% url 'treatments'%}"><img src="{% static 'images/syringe.png' %}" alt="home"><span>treatments</span></a></li>
+            <li {% if request.resolver_match.url_name == 'reservation' %}style="background-color: rgb(119, 209, 237)"{% endif %}><a href="{% url 'reservation' %}"><img src="{% static 'images/booking.png' %}" alt=""><span>reservation</span></a></li>
+            {% if perms.dashboard.can_view_patient %}
+            <li {% if request.resolver_match.url_name == 'patients' %}style="background-color: rgb(119, 209, 237)"{% endif %}><a href="{% url 'patients'%}"><img src="{% static 'images/people.png' %}" alt="home"><span>patients</span></a></li>
+            {% endif %}
+            {% if perms.dashboard.can_view_visit %}
+            <li {% if request.resolver_match.url_name == 'visits' %}style="background-color: rgb(119, 209, 237)"{% endif %}><a href="{% url 'visits'%}"><img src="{% static 'images/calendar.png' %}" alt="home"><span>visits</span></a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'esco' %}"><img src="{% static 'images/exit.png' %}" alt="profile"><span>exit</span></a></li>
+            {% endif %}
+        </ul>
+    </div>
+    {%endblock%}
+    <div class="sup-cont">
+        <div class="title">
+            <h1>{% if request.resolver_match.url_name == 'dashboard' %}Welcome
+                {% elif request.resolver_match.url_name == 'doctors' or request.resolver_match.url_name == 'doctor-detail'%}Doctors
+                {% elif request.resolver_match.url_name == 'treatments' or request.resolver_match.url_name == 'treatment-detail'%}Treatmets
+                {% elif request.resolver_match.url_name == 'reservation'%}Reservation
+                {% elif request.resolver_match.url_name == 'patients' or request.resolver_match.url_name == 'patient-detail'%}Patients
+                {% elif request.resolver_match.url_name == 'visits' or request.resolver_match.url_name == 'visit-detail'%}Visits
+                {% elif request.resolver_match.url_name == 'login'%}Log in
+                {% elif request.resolver_match.url_name == 'signup'%}Sign Up
+                {% elif request.resolver_match.url_name == 'esco'%}Exit
+                {%endif%}</h1>
+            <h1 style="text-align: center;">{{ user.username }}</h1><h1 style="text-align: end;">Clinic E&N</h1></div>
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    
+    
+    
+    
+    
+     
+</body>
+</html>

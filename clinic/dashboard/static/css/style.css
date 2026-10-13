@@ -1,0 +1,410 @@
+*{
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding:0;
+    font-style: normal;
+}
+
+
+body{
+    display: flex;
+    gap: 20px;
+}
+.sidebar{
+    width: 100px;
+    height: 100vh;
+    background-color: rgb(58, 58, 255);
+    transition: 0.5s ease;
+}
+.sidebar:hover{
+    width: 260px;
+    transition: 0.5s ease;
+}
+.sidebar a{
+    text-decoration: none;
+    display: flex;
+    direction: row;
+    overflow: hidden;
+    color: #fff;
+    align-items: center;
+    justify-content: flex-start;
+    gap:10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.sidebar li:hover{
+    transition: 0.5 ease;
+    background-color: rgb(119, 209, 237);
+
+}
+.sidebar li {
+    list-style-type: none;
+    padding: 10px 20px;
+}
+.sidebar li img{
+    width: 50px;
+    height: 50px;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    box-shadow:10px 5px 5px rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 10px;
+}
+.title h1{
+    font-size: 3rem;
+}
+.content{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.list-el{
+    border: 1px solid black;
+    box-shadow: 3px 3px black;
+    border-radius: 10px;
+    list-style-type:none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+}
+.tab-visit{
+    display: flex;
+    gap:20px;
+
+}
+
+.operazioni{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+.operazioni li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 6px;
+
+}
+
+.operazioni button{
+    border: none;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+    border-radius: 10px;
+    padding: 3px 6px;
+    cursor: pointer;
+
+}
+.new-patient{
+    background-color: rgb(0, 194, 0);
+}
+.new-reservation{
+    background-color: blue;
+}
+.change{
+    background-color: orange;
+}
+.new-patient:hover{
+    transition: .2s;
+    border:1px solid rgb(0, 194, 0);
+    color: rgb(0, 194, 0);
+    background-color: #fff;
+}
+.change:hover{
+    transition: .2s;
+    border:1px solid orange;
+    color:  orange;
+    background-color: #fff;
+}
+.new-reservation:hover{
+    transition: .2s;
+    border:1px solid blue;
+    color: blue;
+    background-color: #fff;
+}
+
+.main{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.access{
+    display: flex;
+    flex-direction: column;
+}
+
+.access{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    border-radius: 10px;
+    padding: 10px;
+   
+
+}
+
+.access .log-in{
+    background-color: rgb(58, 58, 255);
+    color: white;
+    font-weight: bold;
+    padding: 5px 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: larger;
+    
+}
+.access .log-in:hover{
+    transition: .3s;
+    border: 1px solid rgb(58, 58, 255);
+    background-color: white;
+    color: rgb(58, 58, 255);
+}
+.access .sign-up{
+    color: rgb(58, 58, 255);
+    border: 1px solid rgb(58,58,255);
+    background-color: white;
+    font-weight: bold;
+    padding: 5px 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: larger;
+}
+.access .sign-up:hover{
+    transition: .3s;
+    background-color: rgb(58, 58, 255);
+    color: white;
+}
+
+.explore .btn-ex{
+    background-color: rgb(58, 58, 255);
+    color: white;
+    font-weight: bold;
+    padding: 5px 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: larger;
+}
+.explore .btn-ex:hover{
+    transition: .3s;
+    border: 1px solid rgb(58, 58, 255);
+    background-color: white;
+    color: rgb(58, 58, 255);
+    
+}
+.explore{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    border-radius: 10px;
+    padding: 10px;
+    height: 20vh;
+}
+
+.cooki span{
+    color: blue;
+    font-size: larger;
+    font-weight: bold;
+    text-align: start;
+}
+.sub-form{
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: column; 
+    gap:20px;
+    padding: 10px;
+    
+}
+.sub-form li{
+    list-style-type: none;
+}
+.sub-login{
+    width: 20%;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(0, 227, 0);
+    color: #fff;
+    font-weight: bold;
+    
+}
+.sub-login:hover{
+    transition: .3s;
+    color: rgb(0,277,0);
+    background-color: #fff;
+    border: 2px solid rgb(0,277,0);
+}
+.login-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    border-radius: 10px;
+    width: 40%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+
+}
+.login-cont form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.warn{
+    margin-top: 40px;
+    color: red;
+    font-weight: bold;
+}
+
+.login-cont .log-in{
+    background-color: rgb(58, 58, 255);
+    color: white;
+    font-weight: bold;
+    padding: 5px 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: larger;
+    border: none;
+    
+}
+.login-cont .log-in:hover{
+    transition: .3s;
+    border: 1px solid rgb(58, 58, 255);
+    background-color: white;
+    color: rgb(58, 58, 255);
+}
+.sup-cont{
+    width: 100%;
+}
+
+.box-list{
+    display: flex;
+    justify-content: flex-start;
+    gap:20px;
+    flex-direction: column;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    border-radius: 10px;
+    width: 40%;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.box-list li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow: 5px 5px rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.box-list li a{
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 7px;
+}
+.box-list .patient{
+    border: none;
+}
+.box-list .treatments{
+    border: none;
+}
+
+.block-patient{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    row-gap: 10px;
+    border: 1px solid black;
+    box-shadow: 5px 5px rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.block-patient .btn{
+    border: 2px solid rgb(58, 58, 255);
+    background-color: white;
+    color: rgb(58, 58, 255);
+    font-weight: bold;
+    padding: 5px 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: larger;
+}
+ 
+
+.block-patient .btn-del{
+    border: 2px solid red;
+    background-color: white;
+    color:red;
+    font-weight: bold;
+    padding: 5px 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+    .block-patient .btn:hover{
+    transition: .3s;
+    background-color: rgb(58, 58, 255);
+    color: white;
+    
+}
+
+    .block-patient .btn-del:hover{
+    transition: .3s;
+    background-color: red;
+    color: white;
+    
+}
+
+
+.sub-visit{
+    background-color: rgb(58, 58, 255);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+}
+
+.sub-visit:hover{
+    background-color: #fff;
+    color: rgb(58, 58, 255);
+    border: 2px solid rgb(58, 58, 255);
+    transition: .3s;
+}

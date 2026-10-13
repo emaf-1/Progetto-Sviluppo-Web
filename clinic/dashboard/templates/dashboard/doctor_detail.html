@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <div class="block-patient">
+        <h2>{{doctor.first_name}} {{doctor.last_name}}</h2>
+        <p><b>first name:</b> <span>{{doctor.first_name}}</span></p>
+        <p><b>second name:</b> <span>{{doctor.last_name}}</span></p>
+        <p><b>date of birth:</b> <span>{{doctor.date_of_birth}}</span></p>
+        <p><b>specialization:</b> <span>{{doctor.specialization}}</span></p>
+        <a class="btn" href="{% url 'doctors'%}">back</a>
+    </div>
+{% endblock %}

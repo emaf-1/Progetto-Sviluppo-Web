@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+    
+    <div class="box-list ">
+        {% if patient_list %}
+         <ul>
+            {% for patient in patient_list %}
+            <li><p>{{patient.first_name}} {{patient.last_name}}</p> <a class="patient" href="{{ patient.get_absolute_url }}"><img style="width: 50px;height: 50px;"src="{%static 'images/google-docs-black.png'%}" alt=""></a></li>
+            {% endfor %}
+         </ul>
+        {% else %}
+         <p>No patients available.</p>
+        {% endif %}
+        {%block pagination %}
+ {% if is_paginated %}
+ <div style="display: flex; flex-direction: row; align-items: center; gap:20px">
+ {% if page_obj.has_previous %}
+ <a href="{{ request.path }}?page=
+ {{ page_obj.previous_page_number }}"><img style="width: 50px;height: 50px;" src="{% static 'images/left-arrow.png' %}" alt=""></a>
+ {% endif %}
+ 
+ {% if page_obj.has_next %}
+ <a href="{{ request.path }}?page=
+ {{ page_obj.next_page_number }}"><img style="width: 50px;height: 50px;" src="{% static 'images/right-arrow.png'%}" alt=""></a>
+ {% endif %}
+ <p>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+ </div>
+ 
+ {% endif %}
+ {% endblock %}
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+    
+    <div class="box-list">
+        <div class="visitBlock">
+        <h1>Next visits: </h1>
+        <br>
+        <div>
+        {% if visit_list %}
+         <ul>
+            {% for visit in visit_list %}
+            <li class="list-el"><p>{{visit.patient.first_name}} {{visit.patient.last_name}}</p><p>{{visit.date}}</p><p>{{visit.time}}</p> <a style="border: none;" href="{{ visit.get_absolute_url }}"><img style="width: 50px;height:50px;" src="{% static 'images/info.png' %}" alt=""></a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No visits available.</p>
+        {% endif %}
+        </div>
+   {%block pagination %}
+ {% if is_paginated %}
+ <div style="display: flex; flex-direction: row; align-items: center; gap:20px">
+ {% if page_obj.has_previous %}
+ <a href="{{ request.path }}?page=
+ {{ page_obj.previous_page_number }}"><img style="width: 50px;height: 50px;" src="{% static 'images/left-arrow.png' %}" alt=""></a>
+ {% endif %}
+ 
+ {% if page_obj.has_next %}
+ <a href="{{ request.path }}?page=
+ {{ page_obj.next_page_number }}"><img style="width: 50px;height: 50px;" src="{% static 'images/right-arrow.png'%}" alt=""></a>
+ {% endif %}
+ <p>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+ </div>
+ 
+ {% endif %}
+ {% endblock %}
+    </div>
+    </div>
+    
+    
+{%endblock%}

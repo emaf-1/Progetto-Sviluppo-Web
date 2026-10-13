@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<form class="sub-form" action="" method="post">
+    {% csrf_token %}
+    <h2>{% if visit %}Modify Reservation{% else %}Book a Visit{% endif %}</h2>
+    <p>You must insert your sensitive data to reserve a visit</p>
+   {{form.as_p}}
+    
+    <input class="sub-visit" type="submit" value="Submit">
+</form>
+{% endblock %}

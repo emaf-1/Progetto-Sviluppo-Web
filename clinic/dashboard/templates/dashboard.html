@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<div class="main"> 
+    {% if not user.is_authenticated %}
+    <div class="access">
+        <h2>Please log in or sign up</h2>
+        <a class="log-in" href="{% url 'login' %}">Login</a>
+        <a class="sign-up" href="{% url 'signup' request.path %}">Sign up</a>
+    </div>
+    {% endif %}
+    <div class="explore">
+        <h2>Explore our website</h2>
+        <p>Meet our expert doctors</p><a class="btn-ex" href="{% url 'doctors' %}">View doctors</a>
+        <p>Discover the treatments we offer</p><a class="btn-ex" href="{% url 'treatments' %}">View treatments</a>
+    </div>
+
+    <div class="explore">
+        <h2>Contact Us!</h2>
+        <p>email: een@clinic.com</p>
+        <p>tel: +39 010 101 0101</p>
+        <p>work with us: </p>
+        <p></p>
+    </div>
+
+    <div class="explore">
+        <h2>Request a visit now!</h2>
+        <a class="btn-ex" href="{%url 'reservation' %}">Reserve</a>
+    </div>
+    
+</div>
+<br>
+<br>
+<br>
+<p class="cooki">You've already visited <span>{{ num_visit }}</span> times</p>
+{% endblock %}

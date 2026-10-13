@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="block-patient">
+        <h2>{{patient.last_name}}  {{patient.first_name}}</h2>
+        <p><b>last name:</b> <span>{{patient.first_name}}</span></p>
+        <p><b>first name:</b> <span>{{patient.first_name}}</span></p>
+        <p><b>date of birth:</b> <span>{{patient.date_of_birth}}</span></p>
+        <p><b>medic code :</b> <span>{{patient.cf}}</span></p>
+        <p><b>height:</b> <span>{{patient.height}}cm</span> <b>weight:</b> <span>{{patient.weight}}kg</span></p>
+        <a class="btn" href="{% url 'patients'%}">back</a>
+    </div>
+    
+    
+    
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<form class="sub-form" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p class="warn">REMIND! date's pattern is YYYY-MM-DD</p>
+    <button class="sub-login"type="submit">Sign Up</button>
+    <p>click home to return</p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+    <h2>Do you want to log out?</h2>
+    {% if user.is_authenticated %}
+        <div>
+            
+            <form style="display: inline"method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button style="cursor:pointer;border:none;padding:10px;border-radius: 10px; background-color: red;"type="submit"><img src="{% static 'images/exit.png' %}" alt="exit"></button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
