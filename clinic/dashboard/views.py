@@ -82,14 +82,14 @@ class DoctorDetailView(generic.DetailView):
     model = Doctor
 
 #VISIT
-class VisitListView(generic.ListView):
+class VisitListView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListView):
     login_url = '/accounts/login/'
     permission_required = 'dashboard.can_view_visit'
     model = Visit
     paginate_by = 3
     
 
-class VisitDetailView(LoginRequiredMixin, generic.DetailView):
+class VisitDetailView(LoginRequiredMixin, PermissionRequiredMixin, generic.DetailView):
     login_url = '/accounts/login/'
     permission_required = 'dashboard.can_view_visit'
     model = Visit
