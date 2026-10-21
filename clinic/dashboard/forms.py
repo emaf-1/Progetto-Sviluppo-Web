@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import Visit
+from .models import Patient, Visit
 import datetime
 
 
@@ -21,7 +21,13 @@ class ReservationForm(forms.ModelForm):
     class Meta:
             model= Visit
             fields = ['patient','doctor', 'treatment', 'date', 'time', 'ambulatory']
-        
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        # se lo user ha un profilo paziente, il paziente è fisso
+        if user is not None and hasattr(user, 'patient_profile'):
+            self.instance.patient = user.patient_profile
+            del self.fields['patient']
+       
     def clean_date(self):
             date = self.cleaned_data.get('date')
             if date and date <= datetime.date.today():
@@ -40,3 +46,10 @@ class ReservationForm(forms.ModelForm):
                 if qs.exists():
                     raise forms.ValidationError("Doctor is already busy in this time")
             return cleaned_data
+    def save(self, commit=True):
+        visit = super().save(commit=False)
+        if self.patient_obj:
+            visit.patient = self.patient_obj
+        if commit:
+            visit.save()
+        return visit

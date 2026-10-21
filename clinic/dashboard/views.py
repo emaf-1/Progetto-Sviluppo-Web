@@ -7,12 +7,17 @@ from django.contrib.auth.models import Group
 from .forms import SignUpForm, ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-
-
+from django.core.exceptions import PermissionDenied
+def _check_visit_owner(user, visit):
+    """Un paziente può toccare solo le proprie visite.
+    Dottori e segretari non hanno restrizioni."""
+    if visit and hasattr(user, 'patient_profile') and visit.patient != user.patient_profile:
+        raise PermissionDenied
 @login_required
 def Reservation(req, pk=None):
     if pk:
         visit = get_object_or_404(Visit, pk=pk)
+        _check_visit_owner(req.user, visit)
     else:
         visit = None
 
@@ -31,6 +36,7 @@ def Reservation(req, pk=None):
 @login_required
 def Reservation_delete(req, pk):
     visit=get_object_or_404(Visit, pk=pk)
+    _check_visit_owner(req.user, visit)
     visit.delete()
     return redirect('dashboard')
 
