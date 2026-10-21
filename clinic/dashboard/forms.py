@@ -16,19 +16,19 @@ class SignUpForm(UserCreationForm):
         fields = ['cf', 'username', 'first_name', 'last_name', 'email',  'date_of_birth', 'weight', 'height','password1', 'password2',]
 
 
-    class ReservationForm(forms.ModelForm):
+class ReservationForm(forms.ModelForm):
 
-        class Meta:
+    class Meta:
             model= Visit
             fields = ['patient','doctor', 'treatment', 'date', 'time', 'ambulatory']
         
-        def clean_date(self):
+    def clean_date(self):
             date = self.cleaned_data.get('date')
             if date and date <= datetime.date.today():
                 raise forms.ValidationError("Sorry, you can't reserve a visit in the past")
             return date
 
-        def clean(self):
+    def clean(self):
             cleaned_data = super().clean()
             doctor = cleaned_data.get('doctor')
             date = cleaned_data.get('date')
