@@ -29,6 +29,12 @@ class Patient(models.Model):
         return reverse('patient-detail', args=[str(self.id)])
 
 class Doctor(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='doctor_profile'
+    )
+
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     specialization = models.CharField(max_length=100)

@@ -87,6 +87,12 @@ class VisitListView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListVie
     permission_required = 'dashboard.can_view_visit'
     model = Visit
     paginate_by = 3
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.groups.filter(name='Doctors').exists():
+            return Visit.objects.filter(doctor__user=user)      # doctor sees only his visits 
+        return Visit.objects.all()                              # secretary sees every visit 
     
 
 class VisitDetailView(LoginRequiredMixin, PermissionRequiredMixin, generic.DetailView):
