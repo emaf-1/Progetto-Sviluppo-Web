@@ -13,8 +13,8 @@ class Patient(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField()
-    weight = models.CharField(max_length=4, help_text='kg')
-    height = models.CharField(max_length=3, help_text='cm')
+    weight = models.FloatField(help_text='kg')
+    height = models.FloatField(help_text='cm')
     cf = models.CharField(max_length=16, unique=True, help_text='Codice Fiscale')
 
     class Meta:
@@ -54,7 +54,7 @@ class Doctor(models.Model):
 class Treatment(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=False,null=False)
-    cost = models.CharField(max_length=10, help_text='€')
+    cost = models.DecimalField(max_digits=8, decimal_places=2, help_text='€')
     class Meta:
         ordering = ['name']
 
