@@ -4,10 +4,15 @@ admin:
 nicolo      nico209
 
 doc:
-mario       
+Mario       noxZes-jyqpy9-kucbev
+Samuele     tonnoz-wisjuw-6roQwe
+Pietro      bexwop-novgo4-xacBuc
+Gianni      sYsdir-1gyhsi-dobnot
+
 
 segretary:
 
+
 user:
 fili        flipswd82
-ema         empswd9090
+Ema         xyvqux-wukcis-9zUptu
