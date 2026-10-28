@@ -22,13 +22,12 @@ def Reservation(req, pk=None):
         visit = None
 
     if req.method != 'POST':
-        form = ReservationForm(instance=visit)
+        form = ReservationForm(instance=visit, user=req.user)
         return render(req, 'dashboard/reservation.html', {'form':form, 'visit':visit})
     else:
-        form = ReservationForm(req.POST, instance=visit)
+        form = ReservationForm(req.POST, instance=visit, user=req.user)
         if form.is_valid():
-            nuova_visita=form.save(commit=False)
-            nuova_visita.save()
+            form.save()
             return redirect('dashboard')
         else:
             return render(req, 'dashboard/reservation.html', {'form':form, 'visit':visit})
