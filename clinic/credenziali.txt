@@ -1,0 +1,12 @@
+USERNAME PWD
+
+admin:
+nicolo nico209
+
+doc:
+
+
+segretary:
+
+user:
+mario mariopwd2002
