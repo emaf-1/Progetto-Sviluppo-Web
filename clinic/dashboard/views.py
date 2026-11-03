@@ -4,10 +4,12 @@ from .models import Doctor, Visit, Patient, Treatment
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Group
+from django.db.models import Q
 from .forms import SignUpForm, ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
+
 def _check_visit_owner(user, visit):
     """Un paziente può toccare solo le proprie visite.
     Dottori e segretari non hanno restrizioni."""
@@ -83,6 +85,23 @@ class DoctorListView(generic.ListView):
     model = Doctor
     paginate_by = 3
 
+    def get_queryset(self):
+        qs = Doctor.objects.all()
+        q = self.request.GET.get('q', '').strip()
+        if q:
+            for term in q.split():
+                qs = qs.filter(
+                    Q(first_name__icontains=term) |
+                    Q(last_name__icontains=term) |
+                    Q(specialization__icontains=term)
+                )
+        return qs
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['q'] = self.request.GET.get('q', '')
+        return ctx
+
 class DoctorDetailView(generic.DetailView):
     model = Doctor
 
@@ -121,6 +140,18 @@ class PatientDetailView(PermissionRequiredMixin, LoginRequiredMixin, generic.Det
 class TreatmentListView(generic.ListView):
     model = Treatment
     paginate_by = 3
+
+    def get_queryset(self):
+        qs = Treatment.objects.all()
+        q = self.request.GET.get('q')
+        if q:
+            qs = qs.filter(name__icontains=q)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['q'] = self.request.GET.get('q', '')
+        return ctx
 
 class TreatmentDetailView(generic.DetailView):
     model = Treatment
