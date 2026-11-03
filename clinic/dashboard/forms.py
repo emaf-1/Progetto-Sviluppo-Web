@@ -21,6 +21,10 @@ class ReservationForm(forms.ModelForm):
     class Meta:
             model= Visit
             fields = ['patient','doctor', 'treatment', 'date', 'time', 'ambulatory']
+            widgets = {
+                'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD'}),
+                'time': forms.TimeInput(attrs={'placeholder': 'HH:MM'}),
+            }
     def __init__(self, *args, user=None, **kwargs):
         super().__init__(*args, **kwargs)
         # se lo user ha un profilo paziente, il paziente è fisso
