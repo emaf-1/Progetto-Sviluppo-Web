@@ -11,11 +11,8 @@ from django.core.exceptions import PermissionDenied
 def _check_visit_owner(user, visit):
     """Un paziente può toccare solo le proprie visite.
     Dottori e segretari non hanno restrizioni."""
-    if user.has_perm('dashboard.can_view_visit'):
-        return
-    if visit and hasattr(user, 'patient_profile') and visit.patient == user.patient_profile:
-        return
-    raise PermissionDenied
+    if visit and hasattr(user, 'patient_profile') and visit.patient != user.patient_profile:
+        raise PermissionDenied
 @login_required
 def Reservation(req, pk=None):
     if pk:
