@@ -11,11 +11,11 @@ Gianni      sYsdir-1gyhsi-dobnot
 
 
 segretary:
-lorenzo lollopwd1206
+Lorenzo lollopwd1206
 vittoria vittopwd3456
 eugenio eguepwd3456
 
-user:
+user/patients:
 fili        flipswd82
 Ema         xyvqux-wukcis-9zUptu
 jacopo      dexmos-9caqwe-qaQxyz
