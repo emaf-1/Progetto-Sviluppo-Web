@@ -1,10 +1,13 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 {% block content %}
  <h1>
- Hey!
- <span style="color: red;">
- (You had no permission for the previous page...)
- </span>
+
+ 
+<div style="display: flex; flex-direction: column;align-items: center;color: red;">
+    <p>Hey! You had no permission for the previous page...<p>
+    <p>[Error 403]</p>   
+</div>
+<br>
  </h1>
- <h2><a href="{% url 'index' %}">Back home</a></h2>
-{% endblock %}
+<h2><a href="{% url 'dashboard' %}">Back home</a></h2>
+{% endblock %}  
