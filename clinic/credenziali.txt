@@ -1,7 +1,7 @@
 USERNAME    PWD
 
 admin:
-nicolo      nico209
+nicolo      nico2809
 
 doc:
 Mario       noxZes-jyqpy9-kucbev
@@ -18,4 +18,4 @@ eugenio eguepwd3456
 user:
 fili        flipswd82
 Ema         xyvqux-wukcis-9zUptu
-Jacopo      jack2008pwd
+jacopo      dexmos-9caqwe-qaQxyz
