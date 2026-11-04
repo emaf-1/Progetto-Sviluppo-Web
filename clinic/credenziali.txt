@@ -11,9 +11,9 @@ Gianni      sYsdir-1gyhsi-dobnot
 
 
 segretary:
-Lorenzo lollopwd1206
-vittoria vittopwd3456
-eugenio eguepwd3456
+Lorenzo     lollopwd1206
+vittoria    vittopwd3456
+eugenio     eugepwd3456
 
 user/patients:
 fili        flipswd82
